@@ -11,20 +11,20 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *forward, *temp;
+	listint_t *forward, *temp;
 
-    if (list == NULL || *list == NULL || (*list)->next == NULL)
-        return;
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
 
-    for (forward = (*list)->next; forward != NULL; forward = forward->next)
-    {
-        while (forward->prev != NULL && forward->n < forward->prev->n)
-        {
-            temp = forward->prev;
-            swap(list, temp, forward);
-            print_list(*list);
-        }
-    }
+	for (forward = (*list)->next; forward != NULL; forward = forward->next)
+	{
+		while (forward->prev != NULL && forward->n < forward->prev->n)
+		{
+			temp = forward->prev;
+			swap(list, temp, forward);
+			print_list(*list);
+		}
+	}
 }
 
 /**
@@ -37,21 +37,21 @@ void insertion_sort_list(listint_t **list)
  */
 void swap(listint_t **head, listint_t *node1, listint_t *node2)
 {
-    listint_t *prev, *next;
+	listint_t *prev, *next;
 
-    prev = node1->prev;
-    next = node2->next;
+	prev = node1->prev;
+	next = node2->next;
 
-    if (prev != NULL)
-        prev->next = node2;
-    else
-        *head = node2;
+	if (prev != NULL)
+		prev->next = node2;
+	else
+		*head = node2;
 
-    node1->prev = node2;
-    node1->next = next;
-    node2->prev = prev;
-    node2->next = node1;
+	node1->prev = node2;
+	node1->next = next;
+	node2->prev = prev;
+	node2->next = node1;
 
-    if (next != NULL)
-        next->prev = node1;
+	if (next != NULL)
+		next->prev = node1;
 }
