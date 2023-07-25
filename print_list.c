@@ -8,17 +8,16 @@
  */
 void print_list(const listint_t *list)
 {
-	if (list)
-	{
-		printf("%d", list->n);
-		list = list->next;
-	}
+	int i;
 
+	i = 0;
 	while (list)
 	{
-		printf(", %d", list->n);
+		if (i > 0)
+			printf(", ");
+		printf("%d", list->n);
+		++i;
 		list = list->next;
 	}
-
 	printf("\n");
 }
