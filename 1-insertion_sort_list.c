@@ -22,16 +22,17 @@ void insertion_sort_list(listint_t **list)
 		{
 			swap_node = temp->prev;
 
-			if (swap_node->prev != NULL)
-				swap_node->prev->next = temp;
-
+			/* Swap the nodes */
+			swap_node->next = temp->next;
 			if (temp->next != NULL)
 				temp->next->prev = swap_node;
 
-			swap_node->next = temp->next;
 			temp->prev = swap_node->prev;
-			swap_node->prev = temp;
+			if (swap_node->prev != NULL)
+				swap_node->prev->next = temp;
+
 			temp->next = swap_node;
+			swap_node->prev = temp;
 
 			if (temp->prev == NULL)
 				*list = temp;
